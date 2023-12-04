@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.time.Month;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -56,8 +58,27 @@ class GameTest {
 	}
 	
 	@Test
-	void test_amount_accurate() {
+	void test_current_price_mapping() {
 		assertNotNull(game);
+	}
+	
+	@Test
+	void test_category_mapping() {
+		assertNotNull(game);
+		assertEquals(Category.MOBA, game.getCategory());
+	}
+	
+	@Test
+	void test_release_price_mapping() {
+		assertNotNull(game);
+		assertEquals(0.0, game.getReleasePrice());
+	}
+	@Test
+	void test_release_date_mapping() {
+		assertNotNull(game);
+		assertEquals(27, game.getReleaseDate().getDayOfMonth());
+		assertEquals(Month.OCTOBER, game.getReleaseDate().getMonth());
+		assertEquals(2009, game.getReleaseDate().getYear());
 	}
 
 }
