@@ -1,7 +1,6 @@
 package com.skilldistillery.games.entities;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,14 +46,6 @@ public class Game {
 		this.category = category;
 		this.activePlayers = activePlayers;
 	}
-
-
-
-
-
-
-
-
 
 	public int getId() {
 		return id;
