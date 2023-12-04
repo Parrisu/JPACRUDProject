@@ -54,10 +54,27 @@ public class GameController {
 		return "home";
 	}
 	
+	@RequestMapping(path = "update.do")
+	public String updateRequest(@RequestParam("gameId")int id, Model model) {
+		model.addAttribute("game", gameDao.findById(id));
+		return "update";
+	}
+	
 	@RequestMapping(path = "updateGame.do")
-	public String updateGame(@RequestParam("name")String name, @RequestParam("id")int id, Model model) {
-		Game game = gameDao.findById(id);
-		game.setName(name);
+	public String updateGame(@RequestParam("gameId") int id, @RequestParam("name") String name,
+			@RequestParam("active") int players, @RequestParam("category") String category, Model model) {
+		
+		Category type;
+		if(category.equals("fps")) {
+			type = Category.FPS;
+		} else if (category.equals("moba")) {
+			type = Category.MOBA;
+		}else if (category.equals("mmorpg")) {
+			type = Category.MMORPG;
+		}else {
+			type = Category.RPG;
+		}
+		Game game = new Game(name, type, players);
 		gameDao.update(id, game);
 		model.addAttribute("games", gameDao.findAll());
 		return "home";

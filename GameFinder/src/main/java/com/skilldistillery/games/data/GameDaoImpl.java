@@ -47,6 +47,8 @@ public class GameDaoImpl implements GameDAO {
 
 		if (gameToUpdate != null) {
 			gameToUpdate.setName(game.getName());
+			gameToUpdate.setCategory(game.getCategory());
+			gameToUpdate.setActivePlayers(game.getActivePlayers());
 			System.out.println(gameToUpdate + " was updated");
 		}
 		return gameToUpdate;

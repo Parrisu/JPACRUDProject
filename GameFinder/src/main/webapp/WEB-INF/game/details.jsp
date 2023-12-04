@@ -55,7 +55,7 @@
 						</tbody>
 					</table>
 
-					<form action="updateGame.do" method="POST">
+					<%-- <form action="updateGame.do" method="POST">
 						<div class="row mb-3">
 							<label for="name">Name</label>
 							<div class="col-sm-10">
@@ -64,6 +64,10 @@
 						</div>
 						<input type="hidden" id="id" name="id" value="${game.id}">
 						<input type="submit" class="btn btn-primary" value="Update Name" />
+					</form> --%>
+					<form action="update.do" method="POST">
+						<input type="hidden" id="gameId" name="gameId" value="${game.id}">
+						<input type="submit" class="btn btn-primary" value="Update" />
 					</form>
 					<br>
 					<br>
@@ -78,6 +82,8 @@
 				<c:otherwise>
 
 					<h2>No game found</h2>
+					
+					<h4><a href="/">back to home</a></h4>
 
 				</c:otherwise>
 
