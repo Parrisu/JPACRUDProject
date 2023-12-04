@@ -59,6 +59,13 @@ class GameDAOTest {
 	}
 	
 	@Test
+	void test_game_size() {
+		List<Game> games = gameDao.findAll();
+		assertEquals(3, games.size());
+		
+	}
+	
+	@Test
 	void test_Create() {
 		System.out.println(game);
 		gameDao.create(game);
@@ -78,12 +85,6 @@ class GameDAOTest {
 		
 	}
 	
-	@Test
-	void test_game_size() {
-		List<Game> games = gameDao.findAll();
-		assertEquals(3, games.size());
-		
-	}
 
 
 }
