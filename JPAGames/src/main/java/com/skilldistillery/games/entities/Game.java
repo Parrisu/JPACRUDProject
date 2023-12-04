@@ -5,34 +5,56 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Game {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String name;
-	
-	private String description;
-	
-	@Column(name="release_date")
-	private LocalDate releaseDate;
-	
-	private Double price;
-	
-	@Column(name="image_url")
-	private String imageLink;
-	
-	
 
-	public Game() {}
-	
-	
+	private String name;
+
+	@Enumerated(EnumType.STRING)
+	private Category category;
+
+	@Column(name = "release_date")
+	private LocalDate releaseDate;
+
+	@Column(name = "release_price")
+	private Double releasePrice;
+
+	@Column(name = "current_price")
+	private Double currentPrice;
+
+	@Column(name = "active_players")
+	private int activePlayers;
+
+	@Column(name = "image_url")
+	private String imageLink;
+
+	public Game() {
+	}
+
+	public Game(String name, Category category, int activePlayers) {
+		super();
+		this.name = name;
+		this.category = category;
+		this.activePlayers = activePlayers;
+	}
+
+
+
+
+
+
+
+
 
 	public int getId() {
 		return id;
@@ -50,12 +72,12 @@ public class Game {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public LocalDate getReleaseDate() {
@@ -66,12 +88,28 @@ public class Game {
 		this.releaseDate = releaseDate;
 	}
 
-	public Double getPrice() {
-		return price;
+	public Double getReleasePrice() {
+		return releasePrice;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setReleasePrice(Double releasePrice) {
+		this.releasePrice = releasePrice;
+	}
+
+	public Double getCurrentPrice() {
+		return currentPrice;
+	}
+
+	public void setCurrentPrice(Double currentPrice) {
+		this.currentPrice = currentPrice;
+	}
+
+	public int getActivePlayers() {
+		return activePlayers;
+	}
+
+	public void setActivePlayers(int activePlayers) {
+		this.activePlayers = activePlayers;
 	}
 
 	public String getImageLink() {
@@ -80,11 +118,6 @@ public class Game {
 
 	public void setImageLink(String imageLink) {
 		this.imageLink = imageLink;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
 
 	@Override
@@ -101,9 +134,9 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", name=" + name + ", description=" + description + ", releaseDate=" + releaseDate
-				+ ", price=" + price + ", imageLink=" + imageLink + "]";
+		return "Game [id=" + id + ", name=" + name ;
 	}
 	
 	
+
 }

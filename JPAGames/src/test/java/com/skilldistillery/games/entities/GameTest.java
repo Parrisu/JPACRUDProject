@@ -44,9 +44,20 @@ class GameTest {
 	}
 
 	@Test
-	void test_Language_basic_mappings() {
+	void test_game_name() {
 		assertNotNull(game);
 		assertEquals("League of Legends", game.getName());
+	}
+	
+	@Test
+	void test_active_players() {
+		assertNotNull(game);
+		assertEquals(180000000, game.getActivePlayers()); 
+	}
+	
+	@Test
+	void test_amount_accurate() {
+		assertNotNull(game);
 	}
 
 }
